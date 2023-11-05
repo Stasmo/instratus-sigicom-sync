@@ -1,7 +1,9 @@
 Sigicom Sync
 ===
 
-This lambda function pulls data from Sigicom API and pushes it to a FTP server as a CSV.
+This lambda function searches for data from Sigicom API and pushes it to a FTP server as a CSV.
+The lambda creates a search in the Sigicom API, waits for the search to complete, then pulls the data.
+It creates a local CSV file with all the data in it, then pushes to the file to the FTP server.
 
 # Environment Variables
 
@@ -13,10 +15,14 @@ This lambda function pulls data from Sigicom API and pushes it to a FTP server a
 
 By default, the lambda will search for the last hour of data. To extend that beyond an hour,
 set the `searchOffsetSeconds` to something higher than 3600.
+
 You can set `searchOffsetSeconds` to something lower than 3600, but the Sigicom API will
 return the last hour of data at minimum.
+
 To search a specific time period, use the `start` and `end` event parameters. When the
 `start` parameter is used, `searchOffsetSeconds` is ignored.
+
+If `end` is not set, the function will default to the current time as the upper bound for the data search.
 
 | name                | purpose                                                          | default                     |
 |---------------------|------------------------------------------------------------------|-----------------------------|
