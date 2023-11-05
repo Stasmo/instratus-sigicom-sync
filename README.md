@@ -32,7 +32,7 @@ For backfilling data, head over to the lambda function in AWS and to the test ta
 
 To pull data from a specific time period, use the start and end parameters.
 
-```
+```JSON
 {
   "apiToken": "",
   "username": "user:30296",
