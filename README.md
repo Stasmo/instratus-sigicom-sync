@@ -34,20 +34,20 @@ To pull data from a specific time period, use the start and end parameters.
 
 ```
 {
-  apiToken: "",
-  username: "user:30296",
-  baseUrl: "https://instratus.infralogin.com",
-  devices: [
+  "apiToken": "",
+  "username": "user:30296",
+  "baseUrl": "https://instratus.infralogin.com",
+  "devices": [
     {
       "type": "A12"
       "serial": 34000
     }
   ],
-  ftpHost: "data.instratus.ca",
-  ftpUser: "dion",
-  ftpPass: "",
-  ftpPath: "/A12/34000"
-  start: "2023-01-29T00:00:00",
-  end: "2023-02-01T00:00:00"
+  "ftpHost": "data.instratus.ca",
+  "ftpUser": "dion",
+  "ftpPass": "",
+  "ftpPath": "/A12/34000"
+  "start": "2023-01-29T00:00:00",
+  "end": "2023-02-01T00:00:00"
 }
 ```
