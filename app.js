@@ -44,7 +44,7 @@ exports.c50Handler = async (event) => {
       ["interval", "transient"]
     );
 
-    const data = format.formatData(searchData);
+    const data = format.formatData(searchData, true);
     const { intervals, transients } = data;
 
     const timestamp = new Date().toISOString();

@@ -1,4 +1,4 @@
-function formatData({ intervals, transients, meta }) {
+function formatData({ intervals, transients, meta }, fillMaxWithValue = false) {
   const allIntervals = [];
   const allTransients = [];
 
@@ -14,12 +14,14 @@ function formatData({ intervals, transients, meta }) {
     });
   });
 
-  // Fill in max column with "value" if max is undefined
-  allIntervals.forEach(i => {
-    if (i['max'] === undefined) {
-      i.max = i.max || i.value
-    }
-  });
+  if (fillMaxWithValue) {
+    // Fill in max column with "value" if max is undefined
+    allIntervals.forEach(i => {
+      if (i['max'] === undefined) {
+        i.max = i.max || i.value
+      }
+    });
+  }
 
   transients.forEach(transient => {
     serials.forEach(serial => {
