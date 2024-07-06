@@ -14,6 +14,13 @@ function formatData({ intervals, transients, meta }) {
     });
   });
 
+  // Fill in max column with "value" if max is undefined
+  allIntervals.forEach(i => {
+    if (i['max'] === undefined) {
+      i.max = i.max || i.value
+    }
+  });
+
   transients.forEach(transient => {
     serials.forEach(serial => {
       allTransients.push(...transient[serial].transients.map(i => ({

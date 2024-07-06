@@ -51,9 +51,7 @@ exports.handler = async (event) => {
     const outfile = `/tmp/out-${timestamp}.csv`;
     const remotePath = path.join(ftpPath, `intervals-${Date.now()}.csv`);
 
-    const headerSet = new Set();
-    intervals.forEach(i => Object.keys(i).forEach(k => headerSet.add(k)));
-    const headers = Array.from(headerSet).map(h => ({ id: h, title: h }));
+    const headers = ['datetime', 'serial', 'label', 'max'].map(i => ({ id: i, title: i }));
 
     await csv.writeCsv(
       outfile,
