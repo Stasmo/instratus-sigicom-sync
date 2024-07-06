@@ -51,9 +51,13 @@ exports.handler = async (event) => {
     const outfile = `/tmp/out-${timestamp}.csv`;
     const remotePath = path.join(ftpPath, `intervals-${Date.now()}.csv`);
 
+    const headerSet = new Set();
+    intervals.forEach(i => Object.keys(i).forEach(k => headerSet.add(k)));
+    const headers = Array.from(headerSet).map(h => ({ id: h, title: h }));
+
     await csv.writeCsv(
       outfile,
-      Object.keys(intervals[0]).map(k => ({ id: k, title: k })),
+      headers,
       intervals,
     );
 
@@ -79,8 +83,8 @@ if (process.env.LOCAL_DEV) {
   exports.handler({
     devices: [
       {
-        type: 'S50',
-        serial: 14819,
+        type: 'C50',
+        serial: 116788,
       },
     ],
     apiToken: process.env.SIGICOM_API_TOKEN,
